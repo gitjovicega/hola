@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intro Vue Grupo 74</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <style>
+    .tituloh1 {
+      color: aqua;
+    }
+    .claseh1 {
+      color: brown;
+    }
+  </style>
+
+  <body class="container mt-4">
+    <div id="app">
+      <header>
+        <h1> :class="tituloh1" 
+          :id="mainTitle"> 
+          {{ titulo }} {{ grupo }}
+        </h1>
+        <h2> Condicionales</h2>
+        <p> v-if="cantidad > 7">
+           Tengo stock
+          </p>
+        <p> v-else-if="cantidad <= 7 && cantidad > 0"></p>
+        <p>v-else> 
+          Me agote!!
+        </p>
+
+        <p>
+          v-show="visible"> Lorem, ipsum dolor sit amet consectetur adipisicing
+          elit. Quisquam vero a tempora delectus iste. Doloribus, obcaecati!
+          Quisquam, culpa, porro a quae provident nemo aspernatur expedita nobis
+          nulla enim reprehenderit optio.</p>
+          <h2>Bucles</h2>
+
+          <ol>
+            <li v-for="(actividad, index) in actividades" :key="index">
+              {{ actividades.text }}
+              <span v-if="actividad.estado">
+                - Hecho
+              </span>
+              <span v-else>
+                - Pendiente
+              </span>
+            </li>
+          </ol>
+
+          <h2>Interacciones</h2>
+
+          <div>
+
+            <input v-model="textoBuscar" type="text">
+
+            <button
+            class="btn btn-warning"
+            type="button"
+            v-on:click="buscarApi">Busacar Pelicula</button>
+          </div>
+
+          <div v-for="(Pelicula, index) in peliculas" :key="index" class="row">
+            <div class="col-12 col-md-4">
+
+              <img :src="Pelicula.Poster" alt="">
+            </div>
+            <div class="col-12 col-md-8">
+
+              <h3>
+                {{ Pelicula.Title }}
+              </h3>
+              <p>
+                {{ Pelicula.Plot }}
+              </p>
+              <a :href="`https://www.imdb.com/title/` + Pelicula.imdbID">
+              Sitio oficial de IMDB
+            </a>
+            </div>
+          </div>
+      </header>
+    </div>
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
